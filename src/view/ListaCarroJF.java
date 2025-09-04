@@ -13,15 +13,16 @@ import model.Veiculo;
  * @author Ana Luiza
  */
 public class ListaCarroJF extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ListaCarroJF.class.getName());
     ArrayList<Veiculo> listaVeiculo;
+
     /**
      * Creates new form ListaCarroJF
      */
     public ListaCarroJF() {
         initComponents();
-         listaVeiculo = new ArrayList<>();
+        listaVeiculo = new ArrayList<>();
     }
 
     /**
@@ -109,15 +110,15 @@ public class ListaCarroJF extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-      CadastroVeiculoJFrame telaCadastro = new CadastroVeiculoJFrame();
-      telaCadastro.setVisible(true);
+        CadastroVeiculoJFrame telaCadastro = new CadastroVeiculoJFrame(this, true); // 'this' = parent
+        telaCadastro.setVisible(true);
 
-   
-    Veiculo veiculoCadastrado = telaCadastro.getVeiculo();
-    if (veiculoCadastrado != null) {
-        listaVeiculo.add(veiculoCadastrado);
-        loadItensInList();
-    }
+        Veiculo veiculoCadastrado = telaCadastro.getVeiculo();
+        if (veiculoCadastrado != null) {
+            listaVeiculo.add(veiculoCadastrado);
+            loadItensInList();
+        }
+
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAddActionPerformed
 
@@ -153,15 +154,16 @@ public class ListaCarroJF extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new ListaCarroJF().setVisible(true));
     }
-public void loadItensInList(){
+
+    public void loadItensInList() {
         DefaultListModel modeloLista = new DefaultListModel();
         modeloLista.removeAllElements();
-        for(Veiculo veiculo: listaVeiculo){
+        for (Veiculo veiculo : listaVeiculo) {
             modeloLista.addElement(veiculo);
         }
-        
+
         listaCarro.setModel(modeloLista);
-        
+
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LbTitulo;

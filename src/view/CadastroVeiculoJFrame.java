@@ -4,6 +4,7 @@
  */
 package view;
 
+import java.awt.Frame;
 import javax.swing.JOptionPane;
 import model.Marca;
 import model.Modelo;
@@ -13,24 +14,27 @@ import model.Veiculo;
  *
  * @author Ana Luiza
  */
-public class CadastroVeiculoJFrame extends javax.swing.JFrame {
+public class CadastroVeiculoJFrame extends javax.swing.JDialog {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CadastroVeiculoJFrame.class.getName());
     private Veiculo veiculo;
     /**
      * Creates new form CadastroVeiculoJFrame
      */
-    public CadastroVeiculoJFrame() {
+       public CadastroVeiculoJFrame(java.awt.Frame parent, boolean modal) {
+        super(parent, modal); // define como modal
         initComponents();
-        for (Marca m : Marca.values()) {
-    boxCMarca.addItem(m);
-}
 
-for (Modelo m : Modelo.values()) {
-    boxCModelo.addItem(m);
-}
+        for (Marca m : Marca.values()) {
+            boxCMarca.addItem(m);
+        }
+
+        for (Modelo m : Modelo.values()) {
+            boxCModelo.addItem(m);
+        }
     }
 
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,7 +61,7 @@ for (Modelo m : Modelo.values()) {
         lbModelo = new javax.swing.JLabel();
         btnCadastrar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         txtPlaca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -218,7 +222,11 @@ for (Modelo m : Modelo.values()) {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new CadastroVeiculoJFrame().setVisible(true));
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new CadastroVeiculoJFrame(null, true).setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
