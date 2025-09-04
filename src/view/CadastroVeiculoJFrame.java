@@ -16,7 +16,7 @@ import model.Veiculo;
 public class CadastroVeiculoJFrame extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CadastroVeiculoJFrame.class.getName());
-
+    private Veiculo veiculo;
     /**
      * Creates new form CadastroVeiculoJFrame
      */
@@ -189,9 +189,9 @@ for (Modelo m : Modelo.values()) {
     Marca marca = (Marca) boxCMarca.getSelectedItem();
     Modelo modelo = (Modelo) boxCModelo.getSelectedItem();
 
-    Veiculo v = new Veiculo(placa, cor, anoFabricacao, anoModelo, valor, marca, modelo);
+    veiculo = new Veiculo(placa, cor, anoFabricacao, anoModelo, valor, marca, modelo);
 
-    JOptionPane.showMessageDialog(null, "Veículo cadastrado com sucesso!\n" + v);
+    JOptionPane.showMessageDialog(null, "Veículo cadastrado com sucesso!\n");
 
     dispose();
     }//GEN-LAST:event_btnCadastrarActionPerformed
@@ -240,7 +240,9 @@ for (Modelo m : Modelo.values()) {
     private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables
 
-
+public Veiculo getVeiculo() {
+    return veiculo;
+}
 
 }
 
