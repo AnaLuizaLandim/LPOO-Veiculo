@@ -15,13 +15,14 @@ import model.Veiculo;
  * @author Ana Luiza
  */
 public class CadastroVeiculoJFrame extends javax.swing.JDialog {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CadastroVeiculoJFrame.class.getName());
     private Veiculo veiculo;
+
     /**
      * Creates new form CadastroVeiculoJFrame
      */
-       public CadastroVeiculoJFrame(java.awt.Frame parent, boolean modal) {
+    public CadastroVeiculoJFrame(java.awt.Frame parent, boolean modal) {
         super(parent, modal); // define como modal
         initComponents();
 
@@ -34,7 +35,6 @@ public class CadastroVeiculoJFrame extends javax.swing.JDialog {
         }
     }
 
-  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -184,20 +184,20 @@ public class CadastroVeiculoJFrame extends javax.swing.JDialog {
     }//GEN-LAST:event_txtCorActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-    String placa = txtPlaca.getText();
-    String cor = txtCor.getText();
-    int anoFabricacao = Integer.parseInt(txtAnoFabr.getText());
-    int anoModelo = Integer.parseInt(txtAnoModelo.getText());
-    double valor = Double.parseDouble(txtValor.getText());
+        String placa = txtPlaca.getText();
+        String cor = txtCor.getText();
+        int anoFabricacao = Integer.parseInt(txtAnoFabr.getText());
+        int anoModelo = Integer.parseInt(txtAnoModelo.getText());
+        double valor = Double.parseDouble(txtValor.getText());
 
-    Marca marca = (Marca) boxCMarca.getSelectedItem();
-    Modelo modelo = (Modelo) boxCModelo.getSelectedItem();
+        Marca marca = (Marca) boxCMarca.getSelectedItem();
+        Modelo modelo = (Modelo) boxCModelo.getSelectedItem();
 
-    veiculo = new Veiculo(placa, cor, anoFabricacao, anoModelo, valor, marca, modelo);
+        veiculo = new Veiculo(placa, cor, anoFabricacao, anoModelo, valor, marca, modelo);
 
-    JOptionPane.showMessageDialog(null, "Veículo cadastrado com sucesso!\n");
+        JOptionPane.showMessageDialog(null, "Veículo cadastrado com sucesso!\n");
 
-    dispose();
+        dispose();
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     /**
@@ -248,11 +248,19 @@ public class CadastroVeiculoJFrame extends javax.swing.JDialog {
     private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables
 
-public Veiculo getVeiculo() {
-    return veiculo;
+    public Veiculo getVeiculo() {
+        return veiculo;
+    }
+
+    public void setVeiculo(Veiculo veiculo) {
+        this.veiculo = veiculo;
+        txtPlaca.setText(veiculo.getPlaca());
+        txtCor.setText(veiculo.getCor());
+        txtAnoFabr.setText(String.valueOf(veiculo.getAnoFabricacao()));
+        txtAnoModelo.setText(String.valueOf(veiculo.getAnoModelo()));
+        txtValor.setText(String.valueOf(veiculo.getValor()));
+        boxCMarca.setSelectedItem(veiculo.getMarca());
+        boxCModelo.setSelectedItem(veiculo.getModelo());
+
+    }
 }
-
-}
-
-
-
