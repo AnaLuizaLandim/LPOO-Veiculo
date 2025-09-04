@@ -142,8 +142,8 @@ public class ListaCarroJF extends javax.swing.JFrame {
             
             
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Selecione um item", 
-                    "Produto não selecionado", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "Selecione um carro", 
+                    "Carro não selecionado", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnEditarActionPerformed
 
