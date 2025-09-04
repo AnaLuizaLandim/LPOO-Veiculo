@@ -131,20 +131,25 @@ public class ListaCarroJF extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-       Veiculo veiculoSelecionado = listaCarro.getSelectedValue();
-        if(veiculoSelecionado != null){
-            
-            CadastroVeiculoJFrame telaCadastro = new CadastroVeiculoJFrame(this, true); 
-            telaCadastro.setVeiculo(veiculoSelecionado);
-            telaCadastro.setVisible(true);
-            
+     Veiculo veiculoSelecionado = listaCarro.getSelectedValue();
+    if(veiculoSelecionado != null){
+        
+        CadastroVeiculoJFrame telaCadastro = new CadastroVeiculoJFrame(this, true); 
+        telaCadastro.setVeiculo(veiculoSelecionado); // Preenche os campos com os dados atuais
+        telaCadastro.setVisible(true);
+        
+       
+        Veiculo veiculoEditado = telaCadastro.getVeiculo();
+        
+        if (veiculoEditado != null) {
+          
             loadItensInList();
-            
-            
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Selecione um carro", 
-                    "Carro não selecionado", JOptionPane.ERROR_MESSAGE);
         }
+        
+    } else {
+        JOptionPane.showMessageDialog(rootPane, "Selecione um carro", 
+                "Carro não selecionado", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed

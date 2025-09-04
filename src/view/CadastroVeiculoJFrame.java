@@ -184,20 +184,31 @@ public class CadastroVeiculoJFrame extends javax.swing.JDialog {
     }//GEN-LAST:event_txtCorActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        String placa = txtPlaca.getText();
-        String cor = txtCor.getText();
-        int anoFabricacao = Integer.parseInt(txtAnoFabr.getText());
-        int anoModelo = Integer.parseInt(txtAnoModelo.getText());
-        double valor = Double.parseDouble(txtValor.getText());
+    String placa = txtPlaca.getText();
+    String cor = txtCor.getText();
+    int anoFabricacao = Integer.parseInt(txtAnoFabr.getText());
+    int anoModelo = Integer.parseInt(txtAnoModelo.getText());
+    double valor = Double.parseDouble(txtValor.getText());
 
-        Marca marca = (Marca) boxCMarca.getSelectedItem();
-        Modelo modelo = (Modelo) boxCModelo.getSelectedItem();
+    Marca marca = (Marca) boxCMarca.getSelectedItem();
+    Modelo modelo = (Modelo) boxCModelo.getSelectedItem();
 
+    // Se já existe um veículo (modo edição), atualiza os dados do objeto existente
+    if (veiculo != null) {
+        veiculo.setPlaca(placa);
+        veiculo.setCor(cor);
+        veiculo.setAnoFabricacao(anoFabricacao);
+        veiculo.setAnoModelo(anoModelo);
+        veiculo.setValor(valor);
+        veiculo.setMarca(marca);
+        veiculo.setModelo(modelo);
+    } else {
+        // Se não existe (modo cadastro), cria novo
         veiculo = new Veiculo(placa, cor, anoFabricacao, anoModelo, valor, marca, modelo);
+    }
 
-        JOptionPane.showMessageDialog(null, "Veículo cadastrado com sucesso!\n");
-
-        dispose();
+    JOptionPane.showMessageDialog(null, "Veículo salvo com sucesso!\n");
+    dispose();
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     /**
