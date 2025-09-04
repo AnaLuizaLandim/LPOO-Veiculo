@@ -85,8 +85,21 @@ public class Veiculo {
 
     @Override
     public String toString() {
-        return  placa + ", " + cor + ", " + anoFabricacao + ", " + anoModelo + ", R$" + valor + ", " + marca + ", " + modelo + '}';
+        return  placa + ", " + cor + ", " + anoFabricacao + ", " + anoModelo + ", R$" + valor + ", " + marca + ", " + modelo ;
+    }
+    public String exibirDados(){
+        String aux = "Veiculo cadastrado:\n";
+        aux += "Placa: "+placa+"\n";
+        aux += "Cor: "+cor+"\n";
+        aux += "Ano de Fabricação: "+anoFabricacao+"\n";
+        aux += "Ano do Modelo: "+anoModelo+"\n";
+        aux += "Modelo: "+modelo+"\n";
+        aux += "Marca: "+marca+"\n";
+        aux += "Valor: R$"+valor+"\n";
+
+        return aux;
     }
     
+     
 }
 

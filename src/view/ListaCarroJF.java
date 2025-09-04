@@ -6,6 +6,7 @@ package view;
 
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import model.Veiculo;
 
 /**
@@ -70,6 +71,11 @@ public class ListaCarroJF extends javax.swing.JFrame {
         });
 
         btnInfo.setText("Mais Informações");
+        btnInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInfoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -77,9 +83,7 @@ public class ListaCarroJF extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LbTitulo)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAdd)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -87,15 +91,19 @@ public class ListaCarroJF extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnRemover)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnInfo)))
+                        .addComponent(btnInfo))
+                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(145, 145, 145)
+                        .addComponent(LbTitulo)))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addComponent(LbTitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -127,8 +135,33 @@ public class ListaCarroJF extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
-        // TODO add your handling code here:
+        Veiculo veiculoSelecionado = listaCarro.getSelectedValue();
+        if(veiculoSelecionado != null){
+            
+            int remover = JOptionPane.showConfirmDialog(rootPane, 
+                    "Tem certeza que deseja excluir o carro de placa "+veiculoSelecionado.getPlaca()+"?");
+            
+            if(remover == JOptionPane.YES_OPTION){
+                listaVeiculo.remove(veiculoSelecionado);
+                loadItensInList();
+            }
+            
+            
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Selecione um carro", 
+                    "Carro não selecionado", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnRemoverActionPerformed
+
+    private void btnInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoActionPerformed
+       Veiculo veiculoSelecionado = listaCarro.getSelectedValue();
+        if(veiculoSelecionado != null){
+            JOptionPane.showMessageDialog(rootPane, veiculoSelecionado.exibirDados());
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Selecione um carro", 
+                    "Carro não selecionado", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnInfoActionPerformed
 
     /**
      * @param args the command line arguments
